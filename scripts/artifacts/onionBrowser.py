@@ -1,8 +1,9 @@
 __artifacts_v2__ = {
     "onion_browser_bookmarks": {
         "name": "Onion Browser - Bookmarks",
-        "description": "Bookmarks saved in Onion Browser, with the page name, the URL and the "
-                       "stored site icon",
+        "description": "Bookmarks held in Onion Browser's bookmark store, including the defaults "
+                       "the app seeds on first run, with the page name, the URL and the stored "
+                       "site icon",
         "author": "@AlexisBrignoni, Claude",
         "creation_date": "2026-08-15",
         "last_update_date": "2026-08-21",
