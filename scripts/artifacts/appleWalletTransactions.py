@@ -1,7 +1,9 @@
 __artifacts_v2__ = {
     'appleWalletTransactions': {
         'name': 'Apple Wallet Transactions',
-        'description': 'Apple Wallet Transactions',
+        'description': "Wallet transactions from passes23.sqlite, with date, merchant, locality, "
+                       "amount and currency, location fields, peer payment handle, memo, status "
+                       "and type.",
         'author': '@any333',
         'creation_date': '2021-02-05',
         'last_update_date': '2026-07-31',

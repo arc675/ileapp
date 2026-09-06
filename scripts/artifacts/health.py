@@ -221,7 +221,8 @@ __artifacts_v2__ = {
     },
     "health_steps": {
         "name": "Health - Steps",
-        "description": "Health - Steps",
+        "description": "Step count samples from the samples table of healthdb_secure.sqlite, with "
+                       "start and end, steps, duration and the writing device's id and model.",
         "author": "@KevinPagano3",
         "creation_date": "2023-10-06",
         "last_update_date": "2025-10-13",
