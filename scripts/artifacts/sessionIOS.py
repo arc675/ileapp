@@ -54,7 +54,7 @@ __artifacts_v2__ = {
         "artifact_icon": "message-circle",
         "sample_data": {
             "iphone11_ios17": "iOS 17.3 | 51 rows",
-            "hickman_ios15": "iOS 15.0.2 | 24 rows",
+            "hickman_ios15": "iOS 15.3.1 | 24 rows",
             "dexter_ios18": "iOS 18.3.2 | 10 rows",
             "felix_ios17": "iOS 17.6.1 | 0 rows",
             "felix23_ios16": "iOS 16.5 | 0 rows",
@@ -84,7 +84,7 @@ __artifacts_v2__ = {
             "iphone11_ios17": "iOS 17.3 | 3 rows",
             "dexter_ios18": "iOS 18.3.2 | 2 rows",
             "felix_ios17": "iOS 17.6.1 | 1 row",
-            "hickman_ios15": "iOS 15.0.2 | 0 rows",
+            "hickman_ios15": "iOS 15.3.1 | 0 rows",
             "felix23_ios16": "iOS 16.5 | 0 rows",
             "iphone14plus_ios18": "iOS 18.0 | 0 rows (no keychain in the extraction)",
             "hc_ios18_7": "iOS 18.7.8 | 0 rows (no keychain in the extraction)",
