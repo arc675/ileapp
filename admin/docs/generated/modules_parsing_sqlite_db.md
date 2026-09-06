@@ -86,6 +86,7 @@ This document outlines LEAPP modules parsing SQLite databases using the new `get
 | filesApp |
 | firefoxIOS |
 | fitbitIOS |
+| foursquarePilgrim |
 | foursquareSwarm |
 | geodApplications |
 | geodPDPlaceCache |
