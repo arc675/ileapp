@@ -243,8 +243,8 @@ __artifacts_v2__ = {
         "notes": "Read from the .ips reports whose metadata bug_type is 298 (JetsamEvent) or 288 "
                  "(stackshot, named stacks or stacks+<app> on the tested images). Both bodies are "
                  "JSON; Kind says which, and OS Build is the report's build value, one value per "
-                 "device. The jetsam report is documented by Apple in 'Identifying high-memory "
-                 "use with jetsam event reports' "
+                 "device on the tested images except one that carries two. The jetsam report is "
+                 "documented by Apple in 'Identifying high-memory use with jetsam event reports' "
                  "(https://developer.apple.com/documentation/xcode/identifying-high-memory-use-with-jetsam-event-reports): "
                  "largestProcess names the process using the most memory pages, only the "
                  "jettisoned process carries a reason, and the documented reasons are "
@@ -307,11 +307,12 @@ __artifacts_v2__ = {
                  "leaving 11,691 rows, 551 of them frontmost). States are joined as stored; "
                  "Frontmost is True when they include frontmost. Resident Pages and Lifetime Max "
                  "Pages are rpages and lifetimeMax in memory pages of the Page Size the parent "
-                 "report states. Jetsam Reason is set on the one jettisoned process of each "
-                 "report and blank on the rest. Age is the entry's age value as stored, with no "
-                 "unit stated. Snapshot Time is the report's date, rendered in UTC. A row records "
-                 "that the process existed at Snapshot Time in the state shown; suspended and "
-                 "idle processes were resident but not necessarily in use.",
+                 "report states. Jetsam Reason is set on the jettisoned process of a report and "
+                 "blank on the rest; one report on the tested images marks eleven processes. Age "
+                 "is the entry's age value as stored, with no unit stated. Snapshot Time is the "
+                 "report's date, rendered in UTC. A row records that the process existed at "
+                 "Snapshot Time in the state shown; suspended and idle processes were resident "
+                 "but not necessarily in use.",
         "paths": ('*/Library/Logs/CrashReporter/*.ips',),
         "output_types": "standard",
         "artifact_icon": "layers",
