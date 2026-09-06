@@ -41,7 +41,7 @@ __artifacts_v2__ = {
                 "iOS 14.3 | KeepSafe 10.2.4 | 5 rows, all from the 'primary' table; "
                 "'breakin_alert' and 'fake' present as empty directories, 0 rows"
             ),
-            "hickman_ios15": "iOS 15.0.2 | KeepSafe 11.7.3 (initial install version) | 7 rows, all from the 'primary' table",
+            "hickman_ios15": "iOS 15.3.1 | KeepSafe 11.7.3 (initial install version) | 7 rows, all from the 'primary' table",
             "iphone11_ios17": (
                 "iOS 17.3 | KeepSafe 11.10.1 (initial install version) | 9 rows, all from the 'primary' table, "
                 "sharded into two-letter folders"
@@ -71,7 +71,7 @@ __artifacts_v2__ = {
         "artifact_icon": "folder",
         "sample_data": {
             "hickman_ios14": "iOS 14.3 | KeepSafe 10.2.4 | 5 rows: Main Album, Videos, Cards & ID, Significant Other, My Private Album",
-            "hickman_ios15": "iOS 15.0.2 | KeepSafe 11.7.3 (initial install version) | 5 rows",
+            "hickman_ios15": "iOS 15.3.1 | KeepSafe 11.7.3 (initial install version) | 5 rows",
             "iphone11_ios17": "iOS 17.3 | KeepSafe 11.10.1 (initial install version) | 5 rows",
             "cookbook_ios1751": "iOS 17.5.1 | KeepSafe 11.13.1 (initial install version) | 1 row",
         },
@@ -103,7 +103,7 @@ __artifacts_v2__ = {
         "artifact_icon": "shield-lock",
         "sample_data": {
             "hickman_ios14": "iOS 14.3 | KeepSafe 10.2.4 | 1 row",
-            "hickman_ios15": "iOS 15.0.2 | KeepSafe 11.7.3 (initial install version) | 1 row",
+            "hickman_ios15": "iOS 15.3.1 | KeepSafe 11.7.3 (initial install version) | 1 row",
             "iphone11_ios17": "iOS 17.3 | KeepSafe 11.10.1 (initial install version) | 1 row",
             "cookbook_ios1751": "iOS 17.5.1 | KeepSafe 11.13.1 (initial install version) | 1 row",
         },
