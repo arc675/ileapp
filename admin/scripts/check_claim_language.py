@@ -173,8 +173,6 @@ ALLOWLIST = {
 
     # The match is inside verbatim ZSYNDICATIONSTATE enum labels quoted from the
     # schema (e.g. "2-SyndPs-Manually-Saved_SWY_Synd_Asset-2"), not prose.
-    ('Ph026SyndicationPLAssets.py', 'Ph026_1SyndicationIDAssetsPhDaPsql', 'description', 'manually'),
-    ('Ph026SyndicationPLAssets.py', 'Ph026_2SyndicationPLAssetsSyndPL', 'description', 'manually'),
 
     # "visited places" restates the name of the Location.Visit stream being
     # parsed, and the description goes on to caution against relying on its

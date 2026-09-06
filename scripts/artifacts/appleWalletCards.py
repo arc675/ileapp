@@ -1,7 +1,9 @@
 __artifacts_v2__ = {
     "applewalletcards": {
         "name": "Apple Wallet Cards",
-        "description": "Apple Wallet Cards",
+        "description": "Card number, expiry and card type strings pattern-matched from cached "
+                       "Passbook API responses in the Wallet app's Cache.db, with the cache entry "
+                       "time; heuristic matches that need verification.",
         "author": "@any333",
         "creation_date": "2021-02-05",
         "last_update_date": "2026-07-31",

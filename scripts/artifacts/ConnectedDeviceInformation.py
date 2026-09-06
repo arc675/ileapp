@@ -9,7 +9,9 @@ __artifacts_v2__ = {
     "connected_device_info_device_history": {
         "name": "Connected Device Information - Connected Device and \
 OS History",
-        "description": "Connected Devices",
+        "description": "Apple devices that wrote to the Health store, from data_provenances "
+                       "joined to objects in healthdb_secure.sqlite, with the first and last "
+                       "sample time for each product type, model, OS build and source id.",
         "author": "@SQLMcGee",
         'creation_date': '2025-01-30',
         'last_update_date': '2025-09-29',
@@ -41,7 +43,9 @@ Apple product identification, common name, OS, and timeframe of use",
     "connected_device_info_consolidated_connected_device_history": {
         "name": "Connected Device Information - Consolidated Connected Device \
 History",
-        "description": "Connected Devices",
+        "description": "The Health store's data_provenances grouped by product type and device "
+                       "model, with the first and last time each device wrote a sample to "
+                       "healthdb_secure.sqlite.",
         "author": "@SQLMcGee",
         'creation_date': '2025-01-30',
         'last_update_date': '2025-09-29',
@@ -72,7 +76,8 @@ Apple product grouped for starting and ending timeframe of use",
     },
     "connected_device_information_current_device_info": {
         "name": "Connected Device Information - Current Device Information",
-        "description": "Connected Devices",
+        "description": "The device recorded in the device_context table of healthdb.sqlite, with "
+                       "its product type, model, OS version and the row's modified time.",
         "author": "@SQLMcGee",
         'creation_date': '2025-01-30',
         'last_update_date': '2025-09-29',

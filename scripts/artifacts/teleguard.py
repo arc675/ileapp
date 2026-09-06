@@ -61,7 +61,9 @@ __artifacts_v2__ = {
     },
     "teleguardChannels": {
         "name": "Teleguard Channels",
-        "description": "TeleGuard channels",
+        "description": "Channels from the channels table of the TeleGuard database, with alias, "
+                       "description, category, subscriber and post counts, admin, deleted flag, "
+                       "language and type.",
         "author": "@abrignoni", "creation_date": "2026-06-23", "last_update_date": "2026-06-24", "requirements": "none",
         "category": "Teleguard", "notes": "",
         "paths": ('*/Shared/AppGroup/*/Library/teleguard_database.db*',),
