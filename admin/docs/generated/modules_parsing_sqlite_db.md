@@ -100,6 +100,7 @@ This document outlines LEAPP modules parsing SQLite databases using the new `get
 | googleSheets |
 | googleTranslate |
 | googleVoice |
+| gpsTracks |
 | groupMe |
 | health |
 | hikvision |
