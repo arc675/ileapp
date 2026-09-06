@@ -135,19 +135,20 @@ __artifacts_v2__ = {
                  "through ZLOCALCONNECTIONINFO or ZLOCALCONNECTIONINFO1; both are followed, the "
                  "newest discovery time is reported and Discovery Records gives how many were "
                  "found. A device with no local connection record, 22 of the 31 rows, has blank "
-                 "IP Address, Port, Service Instance Name and Last Discovered Time, which is why "
-                 "Last Accessed Time, present on every row, leads the table. All timestamps in "
-                 "this store are Core Data seconds since 2001-01-01. IP Address was a private "
-                 "network address on every row that carried one, so it places the receiver on its "
-                 "own network rather than on the internet. Older SDK stores lack the "
-                 "ZDEVICECONFIGCHANGETIMESTAMP and ZINTERNALSTATUS columns (the iOS 12 to 16 "
-                 "images); they are read as empty rather than failing the query, which until this "
-                 "change returned no device on 11 of the 12 images. Last Published Time and "
-                 "Device Config Change Time were empty on all 31 rows and Internal Status on all "
-                 "but 2; the columns are kept because the store defines them. Endpoint Device ID "
-                 "held the literal guestModeDeviceID on 21 of the 31 rows. The ZMANUFACTURER "
-                 "column was empty on every row of every tested image and is not reported. The "
-                 "relay access token this store also holds is deliberately not reported.",
+                 "IP Address, Port, Service Instance Name and Last Discovered Time and a Device "
+                 "Version and Capabilities of 0, which is why Last Accessed Time, present on "
+                 "every row, leads the table. All timestamps in this store are Core Data seconds "
+                 "since 2001-01-01. IP Address was a private network address on every row that "
+                 "carried one, so it places the receiver on its own network rather than on the "
+                 "internet. Older SDK stores lack the ZDEVICECONFIGCHANGETIMESTAMP and "
+                 "ZINTERNALSTATUS columns (the iOS 12 to 16 images); they are read as empty "
+                 "rather than failing the query, which until this change returned no device on 11 "
+                 "of the 12 images. Last Published Time and Device Config Change Time were empty "
+                 "on all 31 rows and Internal Status on all but 2; the columns are kept because "
+                 "the store defines them. Endpoint Device ID held the literal guestModeDeviceID "
+                 "on 21 of the 31 rows. The ZMANUFACTURER column was empty on every row of every "
+                 "tested image and is not reported. The relay access token this store also holds "
+                 "is deliberately not reported.",
         "paths": ('*/Library/Caches/CastFrameworkDB.sqlite*',
                   '*/mobile/Containers/Data/Application/*/.com.apple.mobile_container_manager.metadata.plist',
                   '*/mobile/Containers/Data/PluginKitPlugin/*/.com.apple.mobile_container_manager.metadata.plist'),
