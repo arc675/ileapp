@@ -1,7 +1,8 @@
 __artifacts_v2__ = {
     "teleguardMessages": {
         "name": "Teleguard Messages",
-        "description": "TeleGuard chat messages and shared media",
+        "description": "TeleGuard chat messages, with the shared media file where the extraction "
+                       "holds it",
         "author": "@abrignoni", "creation_date": "2026-06-23", "last_update_date": "2026-08-21", "requirements": "none",
         "category": "Teleguard",
         "notes": "Timestamps are UTC (epoch milliseconds). Is Edited? held 0 on every message row of "

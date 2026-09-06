@@ -2,10 +2,11 @@ __artifacts_v2__ = {
     "keepsafe_vault_items": {
         "name": "KeepSafe - Vault Items",
         "description": (
-            "Media items recorded in KeepSafe's RocksDB store (Documents/rdb), matched "
-            "to the encrypted file each item's id names under Documents/<table>/. "
-            "Reports the item's name, timestamps, album, GPS, and SHA-1/dimensions as "
-            "KeepSafe itself recorded them for the original file, before encryption."
+            "Media items recorded in the write-ahead logs of KeepSafe's RocksDB store "
+            "(Documents/rdb), matched to the encrypted file each item's id names under "
+            "Documents/<table>/, with the item's name, timestamps, album, GPS and "
+            "SHA-1/dimensions as KeepSafe recorded them for the original file before encryption; "
+            "items held only in the .sst tables are not read."
         ),
         "author": "@Gear-I, Claude",
         "creation_date": "2026-08-23",
