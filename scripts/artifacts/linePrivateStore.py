@@ -8,35 +8,42 @@ __artifacts_v2__ = {
         "last_update_date": "2026-09-06",
         "requirements": "none",
         "category": "Line",
-        "notes": "One row per row of ZMESSAGEATTACHMENTINFO in the app's per account private "
-                 "store, Library/Application Support/PrivateStore/P_<account "
-                 "id>/Messages/MessageAttachmentInfo.sqlite. The link from an attachment to its "
-                 "message is one the app recorded rather than a match on size or time: the row's "
-                 "message identifier equalled a ZMESSAGE.ZID in the Line.sqlite beside it on "
-                 "every row of both images that carry this store, and the stored file name is "
-                 "that same identifier with an extension. The message text, chat and direction "
-                 "are joined from that database, which the separate Line Artifacts artifact "
-                 "reports in full. Direction is the same inference that module makes and states: "
-                 "a row with no sender reference is read as outgoing. The file itself is looked "
-                 "for in the Message Attachments folder of the same private store, which sits in "
-                 "the app's own container while these databases sit in the app group container, "
-                 "so the two are paired on the account the folder is named for. All four "
-                 "attachment rows across the two images resolved to a file and the picture is "
-                 "shown rather than only named. Every image tested holds one account. A tree "
-                 "built by hand from one of them, carrying a second account whose Message "
-                 "Attachments folder held files of the same names, was run to check that pairing: "
-                 "each of the four rows resolved to the file in its own account's folder. The "
-                 "stored timestamp needs care and the artifact reports both readings. Half the "
-                 "rows on each image carry a plain Unix millisecond value and the other half "
-                 "carry that same kind of value with 2305843009213693952 added to it, which is "
-                 "two to the power of sixty one. Subtracting that offset puts each of those rows "
-                 "within one second of the message it belongs to, measured at 0.97 and 0.74 "
-                 "seconds, and leaving it in place would put them tens of millions of years from "
-                 "now, so the offset is removed and the raw value is kept in its own column. "
-                 "Nothing available explains why the app writes some rows tagged that way. "
-                 "Content Type is reported as stored and held the value 1 on every row of both "
-                 "images, which is too few values to say what the field distinguishes. The store "
-                 "was not present on the third tested image.",
+        "notes": "Rows come from two places and the Row Source column says which. One kind is one "
+                 "row per row of ZMESSAGEATTACHMENTINFO in the app's per account private store, "
+                 "Library/Application Support/PrivateStore/P_<account "
+                 "id>/Messages/MessageAttachmentInfo.sqlite. The other is a file sitting in the "
+                 "Message Attachments folder with no row in that database, which is how two of "
+                 "the four tested images present: they carry the files and no attachment database "
+                 "at all. The link from an attachment to its message is one the app recorded "
+                 "rather than a match on size or time. On the two images that carry the database, "
+                 "the row's message identifier equalled a ZMESSAGE.ZID in the Line.sqlite beside "
+                 "it on every row, and across all four images every one of the ten files is named "
+                 "for a message identifier with an extension added, which is what lets a file "
+                 "with no database row still be joined to its message. A file whose name matches "
+                 "no message is not reported. The message text, chat and direction are joined "
+                 "from Line.sqlite, which the separate Line Artifacts artifact reports in full. "
+                 "Direction is the same inference that module makes and states: a row with no "
+                 "sender reference is read as outgoing. The files sit in the app's own container "
+                 "while the databases sit in the app group container, so the two are paired on "
+                 "the account the folder is named for. All ten files across the four images are "
+                 "attached to their row and the picture is shown rather than only named. Every "
+                 "tested image holds one account. A tree built by hand from one of them, carrying "
+                 "a second account whose Message Attachments folder held files of the same names, "
+                 "was run to check that pairing: each row resolved to the file in its own "
+                 "account's folder. For a row that came from a file, Attachment Timestamp, "
+                 "Content Type and the raw timestamp are blank because only the database carries "
+                 "them, and File Size is the size of the file itself rather than a stored value. "
+                 "The stored timestamp needs care and the artifact reports both readings. Half "
+                 "the database rows on each of those two images carry a plain Unix millisecond "
+                 "value and the other half carry that same kind of value with 2305843009213693952 "
+                 "added to it, which is two to the power of sixty one. Subtracting that offset "
+                 "puts each of those rows within one second of the message it belongs to, "
+                 "measured at 0.97 and 0.74 seconds, and leaving it in place would put them about "
+                 "seventy three million years from now, so the offset is removed and the raw "
+                 "value is kept in its own column. Nothing available explains why the app writes "
+                 "some rows tagged that way. Content Type is reported as stored and held the "
+                 "value 1 on every database row of both images, which is too few values to say "
+                 "what the field distinguishes.",
         "paths": ('*/Containers/*/*/Library/Application Support/PrivateStore/P_*/Messages/MessageAttachmentInfo.sqlite*',
                   '*/Containers/*/*/Library/Application Support/PrivateStore/P_*/Messages/Line.sqlite*',
                   '*/Containers/*/*/Library/Application Support/PrivateStore/P_*/Message Attachments/*'),
@@ -45,7 +52,8 @@ __artifacts_v2__ = {
         "sample_data": {
                            "hickman_ios13": "iOS 13.3.1 | Line | 2 rows",
                            "hickman_ios14": "iOS 14.3 | Line | 2 rows",
-                           "hickman_ios15": "iOS 15.3.1 | Line | store not present",
+                           "hickman_ios15": "iOS 15.3.1 | Line | 2 rows",
+                           "iphone11_ios17": "iOS 17.3 | Line | 4 rows",
                        },
     },
     "line_synced_contacts": {
@@ -61,23 +69,24 @@ __artifacts_v2__ = {
                  "Contacts Syncing/Contacts.sqlite. These are entries the app took from the "
                  "device address book, so a row records a contact the phone held rather than "
                  "somebody the account exchanged messages with, and the two sets are not the "
-                 "same. Created is a Core Data time, seconds since 2001, reported in UTC. The "
-                 "Line Member ID column is what ties a contact to a Line account. It was blank on "
-                 "every row of the two older tested images and carried a value on one of the six "
-                 "rows of the newest, so on these devices almost every synced contact is an "
-                 "address book entry the app had not matched to an account, and a blank there is "
-                 "not evidence that the person has no Line account. Invited, Removed, Server "
-                 "Synced, Inviteable and Type are the app's own flags and are reported as stored. "
-                 "Invited, Removed and Inviteable held 0 on every row of all three images and "
-                 "Type held 1; Server Synced held 0 on every row of the two older images and 1 on "
-                 "every row of the newest, which is a difference between the images and not "
-                 "something one row says about another. The tested images held 2, 4 and 6 rows. "
-                 "Phonetic Name and Address Book Identifier held no value on any row of the three "
-                 "tested images: the first is filled only where the device address book carries a "
-                 "phonetic reading of the name, and the second only where the app kept a "
-                 "reference back to the address book entry. Account ID held one value on every "
-                 "row of each image, which is what a device with a single signed in account looks "
-                 "like.",
+                 "same. Created is a Core Data time, seconds since 2001, reported in UTC: read "
+                 "that way the values fall in 2020, 2021, 2023 and 2023 to 2024 on the four "
+                 "images, each inside the period its own device covers. The Line Member ID column "
+                 "is what ties a contact to a Line account. It was blank on every row of the two "
+                 "older tested images and carried a value on one row of each of the two newer "
+                 "ones, and each of those values is an identifier the Line.sqlite beside it also "
+                 "holds, so on these devices almost every synced contact is an address book entry "
+                 "the app had not matched to an account, and a blank there is not evidence that "
+                 "the person has no Line account. Invited, Removed, Server Synced, Inviteable and "
+                 "Type are the app's own flags and are reported as stored. Invited, Removed and "
+                 "Inviteable held 0 on every row of all four images and Type held 1; Server "
+                 "Synced held 0 on every row of the two older images and 1 on every row of the "
+                 "two newer, which is a difference between the images and not something one row "
+                 "says about another. The tested images held 2, 4, 6 and 8 rows. Phonetic Name "
+                 "and Address Book Identifier held no value on any row of any tested image, and "
+                 "what fills either of them was not established. Account ID held one value on "
+                 "every row of each image, which is what a device with a single signed in account "
+                 "looks like.",
         "paths": ('*/Containers/*/*/Library/Application Support/PrivateStore/P_*/Contacts Syncing/Contacts.sqlite*',),
         "output_types": "standard",
         "artifact_icon": "users",
@@ -85,6 +94,7 @@ __artifacts_v2__ = {
                            "hickman_ios13": "iOS 13.3.1 | Line | 2 rows",
                            "hickman_ios14": "iOS 14.3 | Line | 4 rows",
                            "hickman_ios15": "iOS 15.3.1 | Line | 6 rows",
+                           "iphone11_ios17": "iOS 17.3 | Line | 8 rows",
                        },
     },
     "line_browser_history": {
@@ -98,28 +108,28 @@ __artifacts_v2__ = {
         "category": "Line",
         "notes": "One row per row of ZBROWSERHISTORYPAGEEVENT in the per account private store's "
                  "Browser History/BrowserHistory.sqlite, joined to the page record the event "
-                 "names for the address, title and icon. This is the browser inside the app, "
-                 "which a person reaches by opening a link from a chat, so it is a separate "
-                 "record from Safari's history and neither implies the other. The two dates the "
-                 "event carries are Core Data times, seconds since 2001, reported in UTC. The "
-                 "store exists only on the newer of the three tested images and both of its "
-                 "tables were empty there, so this reader is code present and was not exercised "
-                 "and its columns are the ones the tables declare rather than ones observed "
-                 "carrying values. An empty table is not evidence that no link was ever opened, "
-                 "only that none was recorded here.",
+                 "names for the address, title and icon. This is the browser built into the app "
+                 "rather than Safari, so it is a separate record and neither implies the other. "
+                 "The store exists on two of the four tested images and both of its tables were "
+                 "empty on both, so this reader is code present and was not exercised. Its "
+                 "columns are the ones the tables declare rather than ones observed carrying "
+                 "values, and that includes the two dates, which the artifact reads as Core Data "
+                 "times, seconds since 2001 in UTC, without any row to confirm it. An empty table "
+                 "is not evidence that no link was ever opened, only that none was recorded here.",
         "paths": ('*/Containers/*/*/Library/Application Support/PrivateStore/P_*/Browser History/BrowserHistory.sqlite*',),
         "output_types": "standard",
         "artifact_icon": "globe",
         "sample_data": {
-            "hickman_ios13": "iOS 13.3.1 | Line | store not present",
-            "hickman_ios14": "iOS 14.3 | Line | store not present",
-            "hickman_ios15": "iOS 15.3.1 | Line | 0 rows",
-        },
+                           "hickman_ios13": "iOS 13.3.1 | Line | store not present",
+                           "hickman_ios14": "iOS 14.3 | Line | store not present",
+                           "hickman_ios15": "iOS 15.3.1 | Line | 0 rows",
+                           "iphone11_ios17": "iOS 17.3 | Line | 0 rows",
+                       },
     },
     "line_encrypted_chats": {
         "name": "Line - Encrypted Chats",
-        "description": "The chats the Line app holds end to end encryption records for, and when "
-                       "each key was created.",
+        "description": "The chats the Line app holds end to end encryption records for, and the "
+                       "key records it keeps beside them.",
         "author": "@AlexisBrignoni, Claude",
         "creation_date": "2026-09-06",
         "last_update_date": "2026-09-06",
@@ -128,24 +138,28 @@ __artifacts_v2__ = {
         "notes": "One row per row of ZE2EECHAT and of ZE2EEKEY in the per account private store's "
                  "Messages/E2EEData.sqlite, told apart by the Source Table column. A row records "
                  "that the app held encryption state for a chat, which tells an examiner why "
-                 "message content for that chat may be absent or unreadable elsewhere. Key "
-                 "Created is a Core Data time, seconds since 2001, reported in UTC. **No key "
+                 "message content for that chat may be absent or unreadable elsewhere. **No key "
                  "material is reported.** The ZKEYDATA column holds the key bytes and is read by "
                  "nothing here; the artifact reports only that a key exists, its identifier and "
-                 "when it was made, and an examiner who needs the bytes can go to the file this "
-                 "artifact names. Member ID comes from the row's ZMIDDATA blob, which holds one "
-                 "type byte followed by the sixteen bytes of the identifier. Where that type byte "
-                 "is 0x00 the identifier is rendered the way the app writes it as text elsewhere, "
-                 "the letter u followed by those bytes in lower case hexadecimal. Every value "
-                 "rendered that way on the three tested images equals a ZMID in the Line.sqlite "
-                 "beside it, and on two of them one equals the account the private store folder "
+                 "the creation time the row carries, and an examiner who needs the bytes can go "
+                 "to the file this artifact names. Key Created is read as a Core Data time, "
+                 "seconds since 2001, in UTC, and it is blank on every row of all four tested "
+                 "images because ZCREATEDTIME held 0 on every key row of every one of them. A "
+                 "stored 0 is reported as absent rather than as the first instant of 2001, so a "
+                 "blank there means the app recorded no time, not that the key was made then. "
+                 "Member ID comes from the row's ZMIDDATA blob, which holds one type byte "
+                 "followed by the sixteen bytes of the identifier. Where that type byte is 0x00 "
+                 "the identifier is rendered the way the app writes it as text elsewhere, the "
+                 "letter u followed by those bytes in lower case hexadecimal. Every value "
+                 "rendered that way on the four tested images equals a ZMID in the Line.sqlite "
+                 "beside it, and on three of them one equals the account the private store folder "
                  "is named for, which is what establishes the rendering. No other type byte was "
                  "seen, so a blob carrying one is reported as hexadecimal as stored. Content "
                  "Types, Current Key ID, Sequence Number and Version are reported as stored. The "
-                 "tested images held 2, 3 and 4 chat rows and 1, 2 and 2 key rows. Account ID "
-                 "held one value on every row of each tested image, since one account was signed "
-                 "in; it is kept because it is what separates two accounts on a device that has "
-                 "both.",
+                 "tested images held 2, 3, 4 and 5 chat rows and 1, 2, 2 and 3 key rows. Account "
+                 "ID held one value on every row of each tested image, since one account was "
+                 "signed in; it is kept because it is what separates two accounts on a device "
+                 "that has both.",
         "paths": ('*/Containers/*/*/Library/Application Support/PrivateStore/P_*/Messages/E2EEData.sqlite*',),
         "output_types": "standard",
         "artifact_icon": "lock",
@@ -153,6 +167,7 @@ __artifacts_v2__ = {
                            "hickman_ios13": "iOS 13.3.1 | Line | 3 rows",
                            "hickman_ios14": "iOS 14.3 | Line | 5 rows",
                            "hickman_ios15": "iOS 15.3.1 | Line | 6 rows",
+                           "iphone11_ios17": "iOS 17.3 | Line | 8 rows",
                        },
     },
 }
@@ -276,10 +291,9 @@ def _member_id(blob):
     return runs[0].decode('ascii', 'replace') if runs else ''
 
 
-def _messages(store):
-    '''{message id: (timestamp, text, chat member id, sender name, direction)} for a store.'''
-    path = os.path.join(store, 'Messages', 'Line.sqlite')
-    if not os.path.exists(path):
+def _messages_from(path):
+    '''{message id: (timestamp, text, chat member id, sender name, direction)} for a database.'''
+    if not path or not os.path.exists(path):
         return {}
     index = {}
     for (message_id, stamp, text, chat_mid, sender_name, sender) in _rows(
@@ -312,34 +326,71 @@ def line_message_attachments(context):
             # only the P_<account id> directory name.
             on_disk.setdefault((_account_id(path), os.path.basename(path)), path)
 
+    # Line.sqlite is in the app group container while the attachment files are in the app data
+    # container, so the message index is keyed on the account rather than on either store path.
+    line_stores = {}
+    for found in _stores(files_found, 'Line.sqlite'):
+        line_stores.setdefault(_account_id(found), found)
+    indexes = {}
+
+    def messages_for(account):
+        if account not in indexes:
+            indexes[account] = _messages_from(line_stores.get(account, ''))
+        return indexes[account]
+
+    reported = set()
+    read = []
     for source_path in sources:
-        store = _account_store(source_path)
-        messages = _messages(store)
+        account = _account_id(source_path)
+        messages = messages_for(account)
+        read.append(source_path)
         for (message_id, chat_mid, filename, content_type, size, stamp) in _rows(
                 source_path, 'ZMESSAGEATTACHMENTINFO',
                 'ZMESSAGEID, ZCHATMID, ZFILENAME, ZCONTENTTYPE, ZFILESIZE, ZTIMESTAMP'):
             when, text, chat, sender, direction = messages.get(
                 _text(message_id), ('', '', '', '', ''))
             media = ''
-            cached = (on_disk.get((_account_id(source_path), _text(filename)))
-                      if filename else None)
+            cached = on_disk.get((account, _text(filename))) if filename else None
             if cached:
                 media = check_in_media(cached, _text(filename))
+                reported.add((account, _text(filename)))
             data_list.append((
                 _attachment_time(stamp), when, direction, sender, _text(text), media,
                 _text(filename), _text(content_type), _text(size), chat or _member_id(chat_mid),
-                _text(message_id), _text(stamp), _account_id(source_path),
+                _text(message_id), _text(stamp), 'Attachment database', account,
             ))
 
-    data_list.sort(key=lambda row: str(row[0]), reverse=True)
+    # A file can sit in the folder with no row in the attachment database, and its name is the
+    # identifier of the message it belongs to, so the message is still reachable without it.
+    for (account, filename), path in sorted(on_disk.items()):
+        if (account, filename) in reported:
+            continue
+        messages = messages_for(account)
+        message_id = os.path.splitext(filename)[0]
+        if message_id not in messages:
+            continue
+        line_store = line_stores.get(account, '')
+        if line_store and line_store not in read:
+            read.append(line_store)
+        when, text, chat, sender, direction = messages[message_id]
+        try:
+            size = os.path.getsize(path)
+        except OSError:
+            size = ''
+        data_list.append((
+            '', when, direction, sender, _text(text), check_in_media(path, filename),
+            filename, '', _text(size), chat, message_id, '', 'File on disk', account,
+        ))
+
+    data_list.sort(key=lambda row: (str(row[1]), str(row[0])), reverse=True)
 
     data_headers = (
         ('Attachment Timestamp', 'datetime'), ('Message Timestamp', 'datetime'),
         'Message Direction', 'Sender', 'Message', ('Attachment', 'media'), 'File Name',
         'Content Type (as stored)', 'File Size', 'Chat Member ID', 'Message ID',
-        'Attachment Timestamp (as stored)', 'Account ID',
+        'Attachment Timestamp (as stored)', 'Row Source', 'Account ID',
     )
-    return data_headers, data_list, '\n'.join(sources)
+    return data_headers, data_list, '\n'.join(read)
 
 
 @artifact_processor
