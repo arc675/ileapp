@@ -28,7 +28,7 @@ __artifacts_v2__ = {
                  "write-ahead log that is load-bearing in both directions on the tested image: "
                  "reading with the log gives 949 blocks and reading the database alone gives "
                  "945, while the transactions table holds 5 rows without the log and none with "
-                 "it, so the log must travel with the database."
+                 "it, so the log must travel with the database. "
                  "Deleted From Trash Time held no value on any row of the tested image, which "
                  "is what a store holds while nothing has been emptied out of the trash.",
         "paths": ('*/mobile/Containers/Data/Application/*/Library/LocalDatabase/notion.db*',),
@@ -58,7 +58,7 @@ __artifacts_v2__ = {
                  "an edit time on the page itself does not, so the two answer different "
                  "questions. This queue is drained as it is sent, so it holds recent activity "
                  "rather than a history, and the rows present are bounded by that rather than by "
-                 "the acquisition."
+                 "the acquisition. "
                  "Space ID held one value on all 28 rows of the tested image, which is what a "
                  "device signed in to a single workspace looks like.",
         "paths": ('*/mobile/Containers/Data/Application/*/Library/LocalDatabase/notion.db*',),
@@ -85,7 +85,7 @@ __artifacts_v2__ = {
                  "this device, and the signed-in account is not distinguished here from the "
                  "others; the space_user and user_root tables in the same store name the account "
                  "the app was signed in as and are not reported by this artifact. Profile Photo "
-                 "is the address the record holds and is not fetched."
+                 "is the address the record holds and is not fetched. "
                  "Banned (as stored) and Suspended Time held no value on any of the 16 rows, "
                  "which is what a workspace with no restricted account looks like.",
         "paths": ('*/mobile/Containers/Data/Application/*/Library/LocalDatabase/notion.db*',),
@@ -112,7 +112,7 @@ __artifacts_v2__ = {
                  "and type; the names are listed and the types are not, and a collection whose "
                  "schema does not parse reports a blank. The rows of a collection are blocks and "
                  "are reported by the Blocks artifact, where the collection is named by Parent "
-                 "ID, so this artifact describes the containers rather than their contents."
+                 "ID, so this artifact describes the containers rather than their contents. "
                  "Alive (as stored) held the single value 1 and Parent Table the single value "
                  "block on all 17 rows of the tested image, so nothing there had been removed "
                  "and every collection sat inside a page.",
