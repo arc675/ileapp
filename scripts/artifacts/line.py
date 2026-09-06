@@ -8,7 +8,12 @@ __artifacts_v2__ = {
         "requirements": "none",
         "category": "Line",
         "notes": "Direction is inferred: rows without a sender reference are treated as outgoing; "
-                 "established through testing. Every Line.sqlite in the extraction is read rather "
+                 "established through testing. The store holds no user row for the signed in "
+                 "account itself on any tested image, so a message that account sent has no user "
+                 "row to point at, which is what that reading expects. Username names the other "
+                 "party rather than the sender of every row: it was filled on all 66 incoming rows "
+                 "and on none of the 54 outgoing rows across the four tested images. "
+                 "Every Line.sqlite in the extraction is read rather "
                  "than only the first one found. The app keeps one store per signed in account, "
                  "under a folder named for that account, and Account ID carries that name so rows "
                  "from two accounts on one device stay apart. A store that does not sit under such "
