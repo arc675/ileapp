@@ -32,7 +32,7 @@ __artifacts_v2__ = {
         }
     },
     "appleMapsSignificantLocations": {
-        "name": "Apple Maps Significant Locations (routined)",
+        "name": "Apple Maps Significant Locations Visits (routined)",
         "description": "Significant Location visits from the routined caches "
                        "(ZRTLEARNEDLOCATIONOFINTERESTVISITMO in Local.sqlite and "
                        "Cloud-V2.sqlite), with entry and exit times, coordinates and uncertainty; "
@@ -40,7 +40,7 @@ __artifacts_v2__ = {
                        "the evidence.",
         "author": "ogmini",
         "creation_date": "2026-03-04",
-        "last_update_date": "2026-08-21",
+        "last_update_date": "2026-09-06",
         "requirements": "none",
         "category": "Locations",
         "notes": "",
@@ -68,7 +68,7 @@ __artifacts_v2__ = {
         }
     },
     "appleMapsSignificantLocationsVisits": {
-        "name": "Apple Maps Significant Locations Visits (routined)",
+        "name": "Apple Maps Significant Locations (routined)",
         "description": "Significant Location places from the routined caches "
                        "(ZRTLEARNEDLOCATIONOFINTERESTMO with its learned place, map item and "
                        "address rows), with name, category, address fields and coordinates; the "
@@ -76,7 +76,7 @@ __artifacts_v2__ = {
                        "evidence.",
         "author": "ogmini",
         "creation_date": "2026-03-04",
-        "last_update_date": "2026-08-21",
+        "last_update_date": "2026-09-06",
         "requirements": "none",
         "category": "Locations",
         "notes": "",
