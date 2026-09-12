@@ -2,7 +2,7 @@
 # https://for585.com/dfirsummit22
 __artifacts_v2__ = {
     "get_wifiNetworkStoreModel": {
-        "name": "Wifi Known Networkss",
+        "name": "Wifi Known Networks",
         "description": "Parses Wifi details found in WiFiNetworkStoreModel database",
         "author": "@KevinPagano",
         "creation_date": "2022-08-23",
