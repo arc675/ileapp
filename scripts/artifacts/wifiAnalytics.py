@@ -1,7 +1,10 @@
 __artifacts_v2__ = {
     "wifiAnalyticsGeotags": {
         "name": "Wi-Fi Analytics - Geotags",
-        "description": "Geotagged Wi-Fi networks recorded by wifianalyticsd",
+        "description": (
+            "Wi-Fi geotags from DeviceAnalyticsModel.sqlite in the com.apple.wifianalyticsd "
+            "directory, with the linked BSSID and SSID"
+        ),
         "author": "@AlexisBrignoni",
         "creation_date": "2026-07-28",
         "last_update_date": "2026-09-12",
@@ -15,7 +18,7 @@ __artifacts_v2__ = {
         "output_types": ["html", "tsv", "lava", "timeline", "kml"],
         "artifact_icon": "map-pin",
         "sample_data": {
-            "hickman_ios15": "iOS 15 | 9 rows",
+            "hickman_ios15": "iOS 15.3.1 | 9 rows",
             "jess_ios15": "iOS 15.0.2 | 17 rows",
             "magnet_ios16": "iOS 16.1.1 | 14 rows",
             "felix_ios17": "iOS 17.6.1 | 15 rows",
