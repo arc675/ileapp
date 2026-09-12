@@ -4,7 +4,7 @@ __artifacts_v2__ = {
         "description": "Geotagged Wi-Fi networks recorded by wifianalyticsd",
         "author": "@AlexisBrignoni",
         "creation_date": "2026-07-28",
-        "last_update_date": "2026-07-28",
+        "last_update_date": "2026-09-12",
         "requirements": "none",
         "category": "Wi-Fi",
         "notes": "Dates use the Apple Cocoa epoch. Locations should be corroborated.",
@@ -32,7 +32,7 @@ from scripts.ilapfuncs import artifact_processor, get_sqlite_db_records
 def wifiAnalyticsGeotags(context):
     data_headers = (
         ("Date", "datetime"), ("Last Seen", "datetime"), "Geotag ID", "Entity ID",
-        ("Latitude", "latitude"), ("Longitude", "longitude"), "BSSID", "SSID",
+        "Latitude", "Longitude", "BSSID", "SSID",
     )
     data_list = []
     source_path = next(

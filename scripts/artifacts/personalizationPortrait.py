@@ -4,7 +4,7 @@ __artifacts_v2__ = {
         "description": "Locations aggregated for Apple's personalization features",
         "author": "@AlexisBrignoni",
         "creation_date": "2026-07-28",
-        "last_update_date": "2026-07-28",
+        "last_update_date": "2026-09-12",
         "requirements": "none",
         "category": "Locations",
         "notes": (
@@ -36,7 +36,7 @@ from scripts.ilapfuncs import artifact_processor, get_sqlite_db_records
 def personalizationPortraitLocations(context):
     data_headers = (
         ("Source Time", "datetime"), "Location ID", "Bundle ID", "Group ID",
-        ("Latitude", "latitude"), ("Longitude", "longitude"), "Name", "Road", "Street Number",
+        "Latitude", "Longitude", "Name", "Road", "Street Number",
         "City", "Sub-locality", "Administrative Area", "Sub-administrative Area", "Postal Code",
         "Country Code", "Country", "iOS Build", "Category", "Algorithm", "Initial Score",
         "Sync Eligible",
