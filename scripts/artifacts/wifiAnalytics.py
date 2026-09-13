@@ -28,13 +28,17 @@ __artifacts_v2__ = {
     }
 }
 
-from scripts.ilapfuncs import artifact_processor, get_sqlite_db_records
+from scripts.ilapfuncs import (
+    artifact_processor,
+    convert_cocoa_core_data_ts_to_utc,
+    get_sqlite_db_records,
+)
 
 
 @artifact_processor
 def wifiAnalyticsGeotags(context):
     data_headers = (
-        ("Date", "datetime"), ("Last Seen", "datetime"), "Geotag ID", "Entity ID",
+        ("Date", "datetime"), ("Last Seen", "datetime"), "Geotag ID",
         "Latitude", "Longitude", "BSSID", "SSID",
     )
     data_list = []
@@ -47,14 +51,17 @@ def wifiAnalyticsGeotags(context):
         return data_headers, data_list, ""
 
     query = """
-        SELECT datetime(ZGEOTAG.ZDATE + 978307200, 'unixepoch'),
-               datetime(ZBSS.ZLASTSEEN + 978307200, 'unixepoch'),
-               ZGEOTAG.Z_PK, ZGEOTAG.Z_ENT,
+        SELECT ZGEOTAG.ZDATE, ZBSS.ZLASTSEEN, ZGEOTAG.Z_PK,
                ZGEOTAG.ZLATITUDE, ZGEOTAG.ZLONGITUDE, ZBSS.ZBSSID, ZNETWORK.ZSSID
         FROM ZGEOTAG
         LEFT JOIN ZBSS ON ZBSS.Z_PK = ZGEOTAG.ZBSS
         LEFT JOIN ZNETWORK ON ZNETWORK.Z_PK = ZBSS.ZNETWORK
         ORDER BY ZGEOTAG.ZDATE
     """
-    data_list.extend(tuple(row) for row in get_sqlite_db_records(source_path, query))
+    for row in get_sqlite_db_records(source_path, query):
+        values = tuple(row)
+        data_list.append((
+            convert_cocoa_core_data_ts_to_utc(values[0]),
+            convert_cocoa_core_data_ts_to_utc(values[1]),
+        ) + values[2:])
     return data_headers, data_list, context.get_relative_path(source_path)
