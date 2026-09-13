@@ -1,16 +1,25 @@
 __artifacts_v2__ = {
     "personalizationPortraitLocations": {
         "name": "Personalization Portrait - Locations",
-        "description": "Locations aggregated for Apple's personalization features",
+        "description": (
+            "Location records from PPSQLDatabase.db, with the bundle ID and, where recorded, the "
+            "group ID of the source each record references"
+        ),
         "author": "@AlexisBrignoni",
         "creation_date": "2026-07-28",
-        "last_update_date": "2026-07-28",
+        "last_update_date": "2026-09-12",
         "requirements": "none",
         "category": "Locations",
         "notes": (
-            "Aggregated locations are not proof that the device visited a place; the source "
-            "bundle and group provide essential attribution context. Based on research by "
-            "Sarah Edwards: https://www.mac4n6.com/blog/2020/6/2/guest-post-by-bizzybarney-"
+            "A location record is not proof that the device was at that place. The cited "
+            "research describes this database as aggregating data from many sources and says "
+            "attribution must be done carefully. Bundle ID, Group ID and Source Time are read "
+            "from the sources row that each record's source_id references; Source Time is that "
+            "row's seconds_from_1970 value, read as Unix epoch seconds, and what it marks is not "
+            "established here. Latitude and Longitude can be blank, and a record missing either "
+            "is left out of the KML output. Reference: @bizzybarney, 'A Peek Inside the "
+            "PPSQLDatabase.db Personalization Portrait Database', guest post on mac4n6.com, "
+            "https://www.mac4n6.com/blog/2020/6/2/guest-post-by-bizzybarney-"
             "a-peek-inside-the-ppsqldatabasedb-personalization-portrait-database"
         ),
         "paths": (
@@ -19,7 +28,7 @@ __artifacts_v2__ = {
         "output_types": ["html", "tsv", "lava", "timeline", "kml"],
         "artifact_icon": "map",
         "sample_data": {
-            "hickman_ios15": "iOS 15 | 169 rows",
+            "hickman_ios15": "iOS 15.3.1 | 169 rows",
             "jess_ios15": "iOS 15.0.2 | 16 rows",
             "magnet_ios16": "iOS 16.1.1 | 20 rows",
             "felix_ios17": "iOS 17.6.1 | 76 rows",
@@ -36,7 +45,7 @@ from scripts.ilapfuncs import artifact_processor, get_sqlite_db_records
 def personalizationPortraitLocations(context):
     data_headers = (
         ("Source Time", "datetime"), "Location ID", "Bundle ID", "Group ID",
-        ("Latitude", "latitude"), ("Longitude", "longitude"), "Name", "Road", "Street Number",
+        "Latitude", "Longitude", "Name", "Road", "Street Number",
         "City", "Sub-locality", "Administrative Area", "Sub-administrative Area", "Postal Code",
         "Country Code", "Country", "iOS Build", "Category", "Algorithm", "Initial Score",
         "Sync Eligible",
