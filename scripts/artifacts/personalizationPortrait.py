@@ -38,7 +38,7 @@ __artifacts_v2__ = {
     }
 }
 
-from scripts.ilapfuncs import artifact_processor, get_sqlite_db_records
+from scripts.ilapfuncs import artifact_processor, convert_unix_ts_to_utc, get_sqlite_db_records
 
 
 @artifact_processor
@@ -60,7 +60,7 @@ def personalizationPortraitLocations(context):
         return data_headers, data_list, ""
 
     query = """
-        SELECT datetime(sources.seconds_from_1970, 'unixepoch'),
+        SELECT sources.seconds_from_1970,
                loc_records.id, sources.bundle_id, sources.group_id,
                loc_records.cll_latitude_degrees, loc_records.cll_longitude_degrees,
                loc_records.clp_name, loc_records.clp_thoroughfare,
@@ -75,5 +75,7 @@ def personalizationPortraitLocations(context):
         LEFT JOIN sources ON loc_records.source_id = sources.id
         ORDER BY sources.seconds_from_1970
     """
-    data_list.extend(tuple(row) for row in get_sqlite_db_records(source_path, query))
+    for row in get_sqlite_db_records(source_path, query):
+        values = tuple(row)
+        data_list.append((convert_unix_ts_to_utc(values[0]),) + values[1:])
     return data_headers, data_list, context.get_relative_path(source_path)
